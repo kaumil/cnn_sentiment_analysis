@@ -1,0 +1,4 @@
+*.txt
+*.pyc
+/venv/*
+/app/sentiment_analysis/modeling/models/*

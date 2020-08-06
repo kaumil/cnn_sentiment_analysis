@@ -1,0 +1,24 @@
+version: '2'
+
+services: 
+    flask:
+        build:
+            context: .
+            dockerfile: git remote add origin https://github.com/kaumil/cnn_sentiment_analysis.gitDockerfile
+        env_file: .flaskenv
+        image: flask
+        ports:
+            - '5000:80'
+        volumes: 
+            - '.:/app'
+    
+    tfxserving:
+        image: tensorflow/serving
+        ports: 
+            - '8501:8501'
+        volumes:
+            - './app/sentiment_analysis/modeling/models:/models/cnn:ro'
+        environment: 
+            - MODEL_NAME=cnn
+        depends_on:
+            - flask
