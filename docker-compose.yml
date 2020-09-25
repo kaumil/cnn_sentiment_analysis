@@ -4,7 +4,7 @@ services:
     flask:
         build:
             context: .
-            dockerfile: git remote add origin https://github.com/kaumil/cnn_sentiment_analysis.gitDockerfile
+            dockerfile: Dockerfile
         env_file: .flaskenv
         image: flask
         ports:
